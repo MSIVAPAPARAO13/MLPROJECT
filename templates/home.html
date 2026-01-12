@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Exam Performance</title>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Student Exam Performance Indicator</h1>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+
+            <h2>Student Exam Performance Prediction</h2>
+
+            <!-- Gender -->
+            <div class="mb-3">
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option disabled selected value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <!-- Ethnicity -->
+            <div class="mb-3">
+                <label>Race or Ethnicity</label>
+                <select name="ethnicity" required>
+                    <option disabled selected value="">Select Ethnicity</option>
+                    <option value="Group A">Group A</option>
+                    <option value="Group B">Group B</option>
+                    <option value="Group C">Group C</option>
+                    <option value="Group D">Group D</option>
+                    <option value="Group E">Group E</option>
+                </select>
+            </div>
+
+            <!-- Parent Education -->
+            <div class="mb-3">
+                <label>Parental Level of Education</label>
+                <select name="parental_level_of_education" required>
+                    <option disabled selected value="">Select Education</option>
+                    <option value="associate's degree">Associate's degree</option>
+                    <option value="bachelor's degree">Bachelor's degree</option>
+                    <option value="high school">High school</option>
+                    <option value="master's degree">Master's degree</option>
+                    <option value="some college">Some college</option>
+                    <option value="some high school">Some high school</option>
+                </select>
+            </div>
+
+            <!-- Lunch -->
+            <div class="mb-3">
+                <label>Lunch Type</label>
+                <select name="lunch" required>
+                    <option disabled selected value="">Select Lunch</option>
+                    <option value="standard">Standard</option>
+                    <option value="free/reduced">Free / Reduced</option>
+                </select>
+            </div>
+
+            <!-- Test Prep -->
+            <div class="mb-3">
+                <label>Test Preparation Course</label>
+                <select name="test_preparation_course" required>
+                    <option disabled selected value="">Select Course</option>
+                    <option value="none">None</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <!-- Reading Score -->
+            <div class="mb-3">
+                <label>Reading Score (0–100)</label>
+                <input type="number" name="reading_score" min="0" max="100" required>
+            </div>
+
+            <!-- Writing Score -->
+            <div class="mb-3">
+                <label>Writing Score (0–100)</label>
+                <input type="number" name="writing_score" min="0" max="100" required>
+            </div>
+
+            <!-- Submit -->
+            <div class="mb-3">
+                <input type="submit" value="Predict Maths Score">
+            </div>
+
+        </form>
+
+        <h2>
+            Prediction Result: {{ results }}
+        </h2>
+    </div>
+</body>
+</html>
