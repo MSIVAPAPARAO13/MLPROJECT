@@ -129,15 +129,27 @@
                     <!-- Reading Score -->
                     <div class="mb-3">
                         <label class="form-label">Reading Score (0 - 100)</label>
-                        <input type="number" class="form-control" name="reading_score"
-                               min="0" max="100" required>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="reading_score"
+                            min="0"
+                            max="100"
+                            required
+                        >
                     </div>
 
                     <!-- Writing Score -->
                     <div class="mb-3">
                         <label class="form-label">Writing Score (0 - 100)</label>
-                        <input type="number" class="form-control" name="writing_score"
-                               min="0" max="100" required>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="writing_score"
+                            min="0"
+                            max="100"
+                            required
+                        >
                     </div>
 
                     <div class="d-grid">
@@ -147,7 +159,7 @@
                     </div>
                 </form>
 
-                <!-- Prediction Result -->
+                <!-- Prediction Result (SAFE BLOCK) -->
                 {% if results is not none %}
                     {% if results >= 35 %}
                         <div class="prediction-box pass">
@@ -161,6 +173,7 @@
                         </div>
                     {% endif %}
                 {% endif %}
+
             </div>
 
             <footer>

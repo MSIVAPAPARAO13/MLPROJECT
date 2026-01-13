@@ -1,6 +1,7 @@
 pandas
 numpy
 seaborn
+gunicorn
 matplotlib
 scikit-learn
 catboost
