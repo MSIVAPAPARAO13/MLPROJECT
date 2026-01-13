@@ -12,27 +12,39 @@ def index():
 
 @app.route("/predictdata", methods=["GET", "POST"])
 def predict_datapoint():
-    # IMPORTANT: results is ALWAYS defined
+    # Always define results for safety
     if request.method == "GET":
         return render_template("home.html", results=None)
 
-    data = CustomData(
-        gender=request.form["gender"],
-        race_ethnicity=request.form["ethnicity"],
-        parental_level_of_education=request.form["parental_level_of_education"],
-        lunch=request.form["lunch"],
-        test_preparation_course=request.form["test_preparation_course"],
-        reading_score=float(request.form["reading_score"]),
-        writing_score=float(request.form["writing_score"]),
-    )
+    try:
+        data = CustomData(
+            gender=request.form.get("gender"),
+            race_ethnicity=request.form.get("race_ethnicity"),  # ✅ FIXED
+            parental_level_of_education=request.form.get(
+                "parental_level_of_education"
+            ),
+            lunch=request.form.get("lunch"),
+            test_preparation_course=request.form.get(
+                "test_preparation_course"
+            ),
+            reading_score=float(request.form.get("reading_score")),
+            writing_score=float(request.form.get("writing_score")),
+        )
 
-    pred_df = data.get_data_as_data_frame()
+        pred_df = data.get_data_as_data_frame()
 
-    pipeline = PredictPipeline()
-    result = pipeline.predict(pred_df)
+        pipeline = PredictPipeline()
+        result = pipeline.predict(pred_df)
 
-    return render_template("home.html", results=result[0])
+        return render_template(
+            "home.html",
+            results=round(float(result[0]), 2)
+        )
+
+    except Exception as e:
+        print("ERROR:", e)
+        return render_template("home.html", results=None)
 
 
 if __name__ == "__main__":
-    application.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

@@ -79,10 +79,10 @@
                         </select>
                     </div>
 
-                    <!-- Ethnicity -->
+                    <!-- Ethnicity (FIXED NAME) -->
                     <div class="mb-3">
                         <label class="form-label">Race / Ethnicity</label>
-                        <select class="form-select" name="ethnicity" required>
+                        <select class="form-select" name="race_ethnicity" required>
                             <option disabled selected value="">Select Ethnicity</option>
                             <option value="Group A">Group A</option>
                             <option value="Group B">Group B</option>
@@ -129,27 +129,15 @@
                     <!-- Reading Score -->
                     <div class="mb-3">
                         <label class="form-label">Reading Score (0 - 100)</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            name="reading_score"
-                            min="0"
-                            max="100"
-                            required
-                        >
+                        <input type="number" class="form-control"
+                               name="reading_score" min="0" max="100" required>
                     </div>
 
                     <!-- Writing Score -->
                     <div class="mb-3">
                         <label class="form-label">Writing Score (0 - 100)</label>
-                        <input
-                            type="number"
-                            class="form-control"
-                            name="writing_score"
-                            min="0"
-                            max="100"
-                            required
-                        >
+                        <input type="number" class="form-control"
+                               name="writing_score" min="0" max="100" required>
                     </div>
 
                     <div class="d-grid">
@@ -159,7 +147,7 @@
                     </div>
                 </form>
 
-                <!-- Prediction Result (SAFE BLOCK) -->
+                <!-- Prediction Result -->
                 {% if results is not none %}
                     {% if results >= 35 %}
                         <div class="prediction-box pass">
@@ -183,6 +171,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

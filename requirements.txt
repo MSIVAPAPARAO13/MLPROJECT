@@ -1,8 +1,7 @@
-pandas
-numpy
-seaborn
-catboost
-xgboost
 Flask
+gunicorn
+numpy
+pandas
+scikit-learn
+joblib
 dill
-#-e .
